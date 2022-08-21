@@ -1,1 +1,1 @@
-export * from './lib/backend-core-domain-services';
+export * from './lib/repositories';
