@@ -14,7 +14,19 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nestjs-api/backend/core/application-services": [
+        "libs/backend/core/application-services/src/index.ts"
+      ],
+      "@nestjs-api/backend/core/domain-services": [
+        "libs/backend/core/domain-services/src/index.ts"
+      ],
+      "@nestjs-api/backend/infrastructure": [
+        "libs/backend/infrastructure/src/index.ts"
+      ],
+      "@nestjs-api/backend/shell": ["libs/backend/shell/src/index.ts"],
+      "@nestjs-api/backend/ui-rest": ["libs/backend/ui-rest/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

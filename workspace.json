@@ -2,6 +2,11 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "api": "apps/api"
+    "api": "apps/api",
+    "backend-core-application-services": "libs/backend/core/application-services",
+    "backend-core-domain-services": "libs/backend/core/domain-services",
+    "backend-infrastructure": "libs/backend/infrastructure",
+    "backend-shell": "libs/backend/shell",
+    "backend-ui-rest": "libs/backend/ui-rest"
   }
 }
