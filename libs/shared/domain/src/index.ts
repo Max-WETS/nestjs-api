@@ -1,1 +1,2 @@
-export * from './lib/shared-domain';
+export * from './lib/interfaces';
+export * from './lib/models';

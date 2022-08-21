@@ -1,1 +1,1 @@
-export * from './lib/backend-core-application-services.module';
+export * from './lib/posts.service';
