@@ -25,7 +25,7 @@ export class PostsController {
   }
 
   @Post()
-  async createPost(@Body() post: Omit<PostI, 'id'>) {
+  async createPost(@Body() post: PostI) {
     return this.postsService.createPost(post);
   }
 
