@@ -1,13 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Post } from '@nestjs-api/shared/domain';
-import { PostRepositoryAdapter } from '@nestjs-api/backend/infrastructure';
 import { IPostDomainRepository } from '@nestjs-api/backend/core/domain-services';
 
 @Injectable()
 export class PostsService {
-  private lastPostId = 0;
-  private posts: Post[] = [];
-
   constructor(private readonly postsRepository: IPostDomainRepository) {}
 
   async getAllPosts() {

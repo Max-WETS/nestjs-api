@@ -1,5 +1,4 @@
 import { Post } from '@nestjs-api/shared/domain';
-import { UpdateResult } from 'typeorm';
 
 export abstract class IPostDomainRepository {
   abstract find(): Promise<Post[]>;
