@@ -3,11 +3,13 @@
  * This is only a minimal backend to get started.
  */
 
-import { Logger, ValidationPipe } from '@nestjs/common';
-import { NestFactory, HttpAdapterHost } from '@nestjs/core';
-
+import {
+  ClassSerializerInterceptor,
+  Logger,
+  ValidationPipe,
+} from '@nestjs/common';
+import { NestFactory, HttpAdapterHost, Reflector } from '@nestjs/core';
 import { ExceptionsLoggerFilter } from '@nestjs-api/shared/utils';
-
 import { AppModule } from './app/app.module';
 import * as cookieParser from 'cookie-parser';
 
@@ -18,6 +20,8 @@ async function bootstrap() {
   app.useGlobalFilters(new ExceptionsLoggerFilter(httpAdapter));
 
   app.useGlobalPipes(new ValidationPipe());
+
+  app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   app.use(cookieParser());
   const globalPrefix = 'api';

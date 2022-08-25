@@ -11,4 +11,7 @@ export class PostEntity implements Post {
 
   @Column()
   public content!: string;
+
+  @Column({ nullable: true })
+  public category!: string;
 }
