@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { PostEntity, UserEntity } from '@nestjs-api/backend/infrastructure';
+import {
+  PostEntity,
+  UserEntity,
+  AddressEntity,
+} from '@nestjs-api/backend/infrastructure';
 
 @Module({
   imports: [
@@ -15,12 +19,12 @@ import { PostEntity, UserEntity } from '@nestjs-api/backend/infrastructure';
         username: configService.get('POSTGRES_USER'),
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DB'),
-        entities: [PostEntity, UserEntity],
+        entities: [PostEntity, UserEntity, AddressEntity],
         synchronize: true,
       }),
     }),
-    TypeOrmModule.forFeature([PostEntity, UserEntity]),
+    TypeOrmModule.forFeature([PostEntity, UserEntity, AddressEntity]),
   ],
-  exports: [TypeOrmModule.forFeature([PostEntity, UserEntity])],
+  exports: [TypeOrmModule.forFeature([PostEntity, UserEntity, AddressEntity])],
 })
 export class DbModule {}

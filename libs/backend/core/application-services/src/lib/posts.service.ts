@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Post } from '@nestjs-api/shared/domain';
+import { Post, User } from '@nestjs-api/shared/domain';
 import { IPostDomainRepository } from '@nestjs-api/backend/core/domain-services';
 
 @Injectable()
@@ -27,8 +27,11 @@ export class PostsService {
     throw new HttpException('Post not found', HttpStatus.NOT_FOUND);
   }
 
-  async createPost(post: Post) {
-    const newPost = await this.postsRepository.create(post);
+  async createPost(post: Post, user: User) {
+    const newPost = await this.postsRepository.create({
+      ...post,
+      author: user,
+    });
     await this.postsRepository.save(newPost);
     return newPost;
   }

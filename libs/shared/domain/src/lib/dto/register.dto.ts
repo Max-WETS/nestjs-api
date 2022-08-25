@@ -1,5 +1,12 @@
-import { IsEmail, IsString, IsNotEmpty, MinLength } from 'class-validator';
-import { User } from '../models';
+import {
+  IsEmail,
+  IsString,
+  IsNotEmpty,
+  MinLength,
+  IsObject,
+  IsArray,
+} from 'class-validator';
+import { User, Address, Post } from '../models';
 
 export class RegisterDto implements User {
   @IsEmail()
@@ -13,4 +20,11 @@ export class RegisterDto implements User {
   @IsNotEmpty()
   @MinLength(7)
   password!: string;
+
+  @IsNotEmpty()
+  @IsObject()
+  address!: Address;
+
+  @IsArray()
+  posts!: Post[];
 }

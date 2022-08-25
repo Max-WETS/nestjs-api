@@ -1,6 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { User } from '@nestjs-api/shared/domain';
 import { Expose } from 'class-transformer';
+import { AddressEntity } from './address.entity';
+import { PostEntity } from './post.entity';
 
 @Entity()
 export class UserEntity implements User {
@@ -17,4 +26,11 @@ export class UserEntity implements User {
 
   @Column()
   public password!: string;
+
+  @OneToOne(() => AddressEntity, { eager: true, cascade: true })
+  @JoinColumn()
+  public address!: AddressEntity;
+
+  @OneToMany(() => PostEntity, (post: PostEntity) => post.author)
+  public posts!: PostEntity[];
 }
