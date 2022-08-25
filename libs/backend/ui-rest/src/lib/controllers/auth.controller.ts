@@ -9,13 +9,12 @@ import {
   Get,
 } from '@nestjs/common';
 import { AuthenticationService } from '@nestjs-api/backend/core/application-services';
-import {
-  RegisterDto,
-  LocalAuthenticationGuard,
-  RequestWithUser,
-  JwtAuthenticationGuard,
-} from '@nestjs-api/shared/domain';
+import { RegisterDto, RequestWithUser } from '@nestjs-api/shared/domain';
 import { Response } from 'express';
+import {
+  JwtAuthenticationGuard,
+  LocalAuthenticationGuard,
+} from '@nestjs-api/shared/utils';
 
 @Controller('auth')
 export class AuthController {

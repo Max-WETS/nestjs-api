@@ -10,7 +10,8 @@ import {
 } from '@nestjs/common';
 import { PostsService } from '@nestjs-api/backend/core/application-services';
 import { Post as PostI } from '@nestjs-api/shared/domain';
-import { JwtAuthenticationGuard } from '@nestjs-api/shared/domain';
+import { JwtAuthenticationGuard } from '@nestjs-api/shared/utils';
+import { FindOneParams } from '@nestjs-api/shared/utils';
 
 @Controller('posts')
 export class PostsController {
@@ -22,7 +23,7 @@ export class PostsController {
   }
 
   @Get(':id')
-  getPostById(@Param('id') id: string) {
+  getPostById(@Param() { id }: FindOneParams) {
     return this.postsService.getPostById(Number(id));
   }
 
