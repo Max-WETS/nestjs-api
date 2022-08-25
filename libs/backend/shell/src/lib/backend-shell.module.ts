@@ -9,6 +9,7 @@ import {
   IPostDomainRepository,
   IUserDomainRepository,
 } from '@nestjs-api/backend/core/domain-services';
+import { AuthModule } from './auth.module';
 
 const providers: Provider[] = [
   PostsService,
@@ -24,8 +25,8 @@ const providers: Provider[] = [
 
 @Global()
 @Module({
-  imports: [DbModule],
+  imports: [DbModule, AuthModule],
   providers: [...providers],
-  exports: [DbModule, ...providers],
+  exports: [DbModule, AuthModule, ...providers],
 })
 export class BackendShellModule {}
