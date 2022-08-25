@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import * as Joi from '@hapi/joi';
 import { ConfigModule } from '@nestjs/config';
-import { DbModule } from '@nestjs-api/backend/shell';
 
 @Module({
   imports: [
@@ -17,6 +16,8 @@ import { DbModule } from '@nestjs-api/backend/shell';
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         PORT: Joi.number(),
+        JWT_SECRET: Joi.string().required(),
+        JWT_EXPIRATION_TIME: Joi.string().required(),
       }),
     }),
   ],

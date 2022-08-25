@@ -6,9 +6,11 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { PostsService } from '@nestjs-api/backend/core/application-services';
 import { Post as PostI } from '@nestjs-api/shared/domain';
+import { JwtAuthenticationGuard } from '@nestjs-api/shared/domain';
 
 @Controller('posts')
 export class PostsController {
@@ -25,6 +27,7 @@ export class PostsController {
   }
 
   @Post()
+  @UseGuards(JwtAuthenticationGuard)
   async createPost(@Body() post: PostI) {
     return this.postsService.createPost(post);
   }
