@@ -5,6 +5,7 @@ import {
   PostEntity,
   UserEntity,
   AddressEntity,
+  CategoryEntity,
 } from '@nestjs-api/backend/infrastructure';
 
 @Module({
@@ -19,12 +20,24 @@ import {
         username: configService.get('POSTGRES_USER'),
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DB'),
-        entities: [PostEntity, UserEntity, AddressEntity],
+        entities: [PostEntity, UserEntity, AddressEntity, CategoryEntity],
         synchronize: true,
       }),
     }),
-    TypeOrmModule.forFeature([PostEntity, UserEntity, AddressEntity]),
+    TypeOrmModule.forFeature([
+      PostEntity,
+      UserEntity,
+      AddressEntity,
+      CategoryEntity,
+    ]),
   ],
-  exports: [TypeOrmModule.forFeature([PostEntity, UserEntity, AddressEntity])],
+  exports: [
+    TypeOrmModule.forFeature([
+      PostEntity,
+      UserEntity,
+      AddressEntity,
+      CategoryEntity,
+    ]),
+  ],
 })
 export class DbModule {}

@@ -1,6 +1,14 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Post } from '@nestjs-api/shared/domain';
 import { UserEntity } from './user.entity';
+import { CategoryEntity } from './category.entity';
 
 @Entity()
 export class PostEntity implements Post {
@@ -18,4 +26,8 @@ export class PostEntity implements Post {
 
   @ManyToOne(() => UserEntity, (author: UserEntity) => author.posts)
   public author!: UserEntity;
+
+  @ManyToMany(() => CategoryEntity)
+  @JoinTable()
+  public categories!: CategoryEntity[];
 }

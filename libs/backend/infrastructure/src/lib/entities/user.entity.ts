@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '@nestjs-api/shared/domain';
-import { Expose } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 import { AddressEntity } from './address.entity';
 import { PostEntity } from './post.entity';
 
@@ -25,6 +25,7 @@ export class UserEntity implements User {
   public name!: string;
 
   @Column()
+  @Exclude()
   public password!: string;
 
   @OneToOne(() => AddressEntity, { eager: true, cascade: true })

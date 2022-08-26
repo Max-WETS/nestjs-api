@@ -10,7 +10,7 @@ export class PostRepositoryAdapter implements IPostDomainRepository {
   ) {}
 
   async find(): Promise<PostEntity[]> {
-    return await this.postEntityRepository.find();
+    return await this.postEntityRepository.find({ relations: ['author'] });
   }
 
   async findOneOrFail(postId: number): Promise<PostEntity> {
@@ -26,6 +26,7 @@ export class PostRepositoryAdapter implements IPostDomainRepository {
       where: {
         id: postId,
       },
+      relations: ['author'],
     });
   }
 
