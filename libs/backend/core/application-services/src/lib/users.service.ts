@@ -1,10 +1,14 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { User } from '@nestjs-api/shared/domain';
 import { IUserDomainRepository } from '@nestjs-api/backend/core/domain-services';
+import { StripeService } from './stripe.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly usersRepository: IUserDomainRepository) {}
+  constructor(
+    private readonly usersRepository: IUserDomainRepository,
+    private stripeService: StripeService
+  ) {}
 
   async getById(id: number) {
     const user = await this.usersRepository.findOne({ id });
@@ -29,7 +33,14 @@ export class UsersService {
   }
 
   async create(userData: Omit<User, 'id'>) {
-    const newUser = await this.usersRepository.create(userData);
+    const stripeCustomer = await this.stripeService.createCustomer(
+      userData.name,
+      userData.email
+    );
+    const newUser = await this.usersRepository.create({
+      ...userData,
+      stripeCustomerId: stripeCustomer.id,
+    });
     await this.usersRepository.save(newUser);
     return newUser;
   }

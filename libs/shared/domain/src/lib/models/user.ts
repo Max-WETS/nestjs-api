@@ -7,5 +7,6 @@ export interface User {
   name: string;
   password: string;
   address: Address;
+  stripeCustomerId?: string;
   posts?: Post[];
 }

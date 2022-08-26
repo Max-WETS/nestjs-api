@@ -1,5 +1,8 @@
 import { Global, Module, Provider } from '@nestjs/common';
-import { PostsService } from '@nestjs-api/backend/core/application-services';
+import {
+  PostsService,
+  StripeService,
+} from '@nestjs-api/backend/core/application-services';
 import {
   PostRepositoryAdapter,
   UserRepositoryAdapter,
@@ -10,9 +13,12 @@ import {
   IUserDomainRepository,
 } from '@nestjs-api/backend/core/domain-services';
 import { AuthModule } from './auth.module';
+import { ConfigService } from '@nestjs/config';
 
 const providers: Provider[] = [
   PostsService,
+  StripeService,
+  ConfigService,
   {
     provide: IPostDomainRepository,
     useClass: PostRepositoryAdapter,

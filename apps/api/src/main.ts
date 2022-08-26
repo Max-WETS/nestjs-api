@@ -12,6 +12,7 @@ import { NestFactory, HttpAdapterHost, Reflector } from '@nestjs/core';
 import { ExceptionsLoggerFilter } from '@nestjs-api/shared/utils';
 import { AppModule } from './app/app.module';
 import * as cookieParser from 'cookie-parser';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -24,6 +25,13 @@ async function bootstrap() {
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   app.use(cookieParser());
+
+  const configService = app.get(ConfigService);
+  app.enableCors({
+    origin: configService.get('FRONTEND_URL'),
+    credentials: true,
+  });
+
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   const port = process.env.PORT || 3333;

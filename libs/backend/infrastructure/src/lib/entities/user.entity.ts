@@ -28,6 +28,9 @@ export class UserEntity implements User {
   @Exclude()
   public password!: string;
 
+  @Column()
+  public stripeCustomerId!: string;
+
   @OneToOne(() => AddressEntity, { eager: true, cascade: true })
   @JoinColumn()
   public address!: AddressEntity;
