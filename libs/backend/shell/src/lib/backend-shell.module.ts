@@ -10,7 +10,6 @@ import {
   IUserDomainRepository,
 } from '@nestjs-api/backend/core/domain-services';
 import { AuthModule } from './auth.module';
-import { UsersService } from '@nestjs-api/backend/core/application-services';
 
 const providers: Provider[] = [
   PostsService,

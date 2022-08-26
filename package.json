@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "postinstall": "node node_modules/@nx-plus/vue/patch-nx-dep-graph.js"
   },
   "private": true,
   "dependencies": {
@@ -34,12 +35,15 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
     "tslib": "^2.3.0",
-    "typeorm": "^0.3.7"
+    "typeorm": "^0.3.7",
+    "vue": "^3.0.0",
+    "webpack": "^4.39.3"
   },
   "devDependencies": {
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
     "@nrwl/cli": "14.5.8",
+    "@nrwl/cypress": "^14.5.8",
     "@nrwl/eslint-plugin-nx": "14.5.8",
     "@nrwl/jest": "14.5.8",
     "@nrwl/linter": "14.5.8",
@@ -47,17 +51,31 @@
     "@nrwl/node": "14.5.8",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/workspace": "14.5.8",
+    "@nx-plus/vue": "^14.1.0",
     "@types/jest": "27.4.1",
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-prettier": "7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "cypress": "^10.2.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.4.0",
     "jest": "27.5.1",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
     "nx": "14.5.8",
     "prettier": "^2.6.2",
     "ts-jest": "27.1.4",
     "ts-node": "10.9.1",
-    "typescript": "~4.7.2"
+    "typescript": "~4.7.2",
+    "vue3-jest": "^27.0.0-alpha.1"
   }
 }
