@@ -4,6 +4,8 @@
     "jsx": "preserve",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "lib": ["es2017", "dom", "DOM.Iterable"],
+    "downlevelIteration": true,
     "types": ["webpack-env", "node"],
     "strict": true
   },
