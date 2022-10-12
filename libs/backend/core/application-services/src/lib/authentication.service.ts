@@ -1,5 +1,5 @@
 import { UsersService } from './users.service';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PostgresErrorCode, TokenPayload } from '@nestjs-api/shared/domain';
 import { RegisterDto } from '@nestjs-api/shared/domain';
